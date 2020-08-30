@@ -11,12 +11,12 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>HomeController</display-name>
-    <servlet-name>HomeController</servlet-name>
-    <servlet-class>controller.HomeController</servlet-class>
+    <display-name>FormController</display-name>
+    <servlet-name>FormController</servlet-name>
+    <servlet-class>controller.FormController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>HomeController</servlet-name>
-    <url-pattern>/HomeController</url-pattern>
+    <servlet-name>FormController</servlet-name>
+    <url-pattern>/FormController</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -16,18 +16,33 @@
   		<div class="w3-row-padding">
   		      <div class="w3-container w3-card w3-white w3-margin-bottom">
   			    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-plane fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>AeroParker<i class="fa fa-car fa-fw w3-margin-left w3-xxlarge w3-text-teal"></i></h2>
+  			    <% 
+  			    String siteName = request.getParameter("sitename");
+  			    if (siteName != null) {
+  			    %>
+  			        <h3><%= siteName %></h3>
+  			    <%
+  			        } else {
+  			        	siteName = "Avalon City";
+  			    %>
+  	  			        <h3><%= siteName %></h3>
+  			    <%
+  			        }
+  			    %>
+  			    
   			    	<div class="w3-container">
-  			    	   <form action="/action_page.php" target="_blank">
-	  <p><input class="w3-input w3-padding-16" type="text" placeholder="Title" required name="Title"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="First Name" required name="First Name"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Last Name" required name="Last Name"></p>
-      <p><input class="w3-input w3-padding-16" type="email" placeholder="Email Address" required name="Email Address"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Address Line 1" required name="Address Line 1"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Address Line 2"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="City"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Postcode" required name="Postcode"></p>
-      <p><input class="w3-input w3-padding-16" type="number" placeholder="Telephone Number"></p>
-      <p><button class="w3-button w3-light-grey w3-section" type="submit">SEND MESSAGE</button></p>
+  			    	   <form action="success.jsp" method ="GET" target="success.jsp">
+	  <p><input class="w3-input w3-padding-16" type="text" placeholder="Title" required name="Title" maxlength="5"></p>
+	  <p><input type="hidden" name="site_name" value=<%= siteName %>></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="First Name" required name="first_name" maxlength="50"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Last Name" required name="last_name" maxlength="50"></p>
+      <p><input class="w3-input w3-padding-16" type="email" placeholder="Email Address" required name="email_address" maxlength="255"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Address Line 1" required name="address_line_1" maxlength="255"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Address Line 2" name="address_line_2" maxlength="255"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="City" name="city" maxlength="255"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Postcode" required name="postcode" maxlength="10"></p>
+      <p><input class="w3-input w3-padding-16" type="number" placeholder="Telephone Number" name="tel_number" maxlength="20"></p>
+      <p><button class="w3-button w3-light-grey w3-section" type="submit">SUBMIT</button></p>
     </form>
   			    	</div>
   				
