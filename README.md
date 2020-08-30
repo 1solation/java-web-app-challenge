@@ -1,5 +1,5 @@
 
-# java-web-app-challenge
+# Java Servlet Web App Challenge
 Challenge to create a Java web app form with a MySQL backend to submit form inputs. First time using Apache Tomcat, Java servlets and JSP.
 
 NB: This is only partially complete. See bottom of README.md for details.
