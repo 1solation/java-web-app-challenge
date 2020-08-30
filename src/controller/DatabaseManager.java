@@ -32,6 +32,7 @@ public class DatabaseManager {
 		return db_connection;
 	}
 	public int insert(Customer customer) {
+		//This works as expected, minus the ps.getGeneratedKeys() on line 55. Need to revisit.
 		int generatedCustomerID = 0;
 		loadDriver(db_driver);
 		Connection db_connection = getConnection();
@@ -39,7 +40,7 @@ public class DatabaseManager {
 				+ "`ADDRESS LINE 1`,`ADDRESS LINE 2`,`CITY`,`POSTCODE`,`TELEPHONE NUMBER`)  "
 				+ "values (?,?,?,?,?,?,?,?,?)";
 		try {
-			PreparedStatement ps = db_connection.prepareStatement(sql);
+			PreparedStatement ps = db_connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, customer.getEmail_address());
 			ps.setString(2, customer.getTitle());
 			ps.setString(3, customer.getFirst_name());
@@ -65,6 +66,7 @@ public class DatabaseManager {
 	}
 	
 	public void insertSite(int generatedCustomerID, Customer customer) {
+		//This doesn't seem like the right way to do it, will investigate what to do - but limited on time.
 		loadDriver(db_driver);
 		Connection db_connection = getConnection();
 		int siteID = 0;
@@ -83,11 +85,6 @@ public class DatabaseManager {
 			ps.setInt(1, siteID);
 			ps.setInt(2, generatedCustomerID);
 			ps.executeUpdate();
-			
-			ResultSet rs = ps.getGeneratedKeys();
-			while (rs.next()) {
-				siteID = rs.getInt(1);
-			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
