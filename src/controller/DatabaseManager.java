@@ -2,7 +2,9 @@ package controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DatabaseManager {
 	private String db_url = "jdbc:mysql://localhost:3306/AeroParker?useTimezone=true&serverTimezone=UTC";
@@ -29,11 +31,13 @@ public class DatabaseManager {
 		}
 		return db_connection;
 	}
-	public String insert(Customer customer) {
+	public int insert(Customer customer) {
+		int generatedCustomerID = 0;
 		loadDriver(db_driver);
 		Connection db_connection = getConnection();
-		String result = "Data entered successfully";
-		String sql = "insert into AeroParker.customers (`E-MAIL ADDRESS`,`TITLE`,`FIRST NAME`,`LAST NAME`,`ADDRESS LINE 1`,`ADDRESS LINE 2`,`CITY`,`POSTCODE`,`TELEPHONE NUMBER`)  values (?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into AeroParker.customers (`E-MAIL ADDRESS`,`TITLE`,`FIRST NAME`,`LAST NAME`,"
+				+ "`ADDRESS LINE 1`,`ADDRESS LINE 2`,`CITY`,`POSTCODE`,`TELEPHONE NUMBER`)  "
+				+ "values (?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ps = db_connection.prepareStatement(sql);
 			ps.setString(1, customer.getEmail_address());
@@ -46,12 +50,48 @@ public class DatabaseManager {
 			ps.setString(8, customer.getPostcode());
 			ps.setString(9, customer.getTel_number());
 			ps.executeUpdate();
+			
+			ResultSet rs = ps.getGeneratedKeys();
+			while (rs.next()) {
+				generatedCustomerID = rs.getInt(1);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			result = "Data not entered successfully";
+			System.out.println("Insert customer error");
 		}
-		return null;
+		return generatedCustomerID;
 		
+	}
+	
+	public void insertSite(int generatedCustomerID, Customer customer) {
+		loadDriver(db_driver);
+		Connection db_connection = getConnection();
+		int siteID = 0;
+		
+		if (customer.getSitename() == "Avalon City") {
+			siteID = 1;
+		} else if (customer.getSitename() == "AceParks"){
+			siteID = 2;
+		}
+		
+		String sql = "insert into `AeroParker`.`customer sites` (`CUSTOMER_ID`,`SITE_ID` values (?,?)";
+		
+		try {
+			PreparedStatement ps = db_connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			
+			ps.setInt(1, siteID);
+			ps.setInt(2, generatedCustomerID);
+			ps.executeUpdate();
+			
+			ResultSet rs = ps.getGeneratedKeys();
+			while (rs.next()) {
+				siteID = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Insert site error");
+		}		
 	}
 }

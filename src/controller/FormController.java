@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,8 +22,7 @@ public class FormController extends HttpServlet {
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	response.setContentType("text/html;charset=UTF-8");
-    	
+    	response.setContentType("text/html;charset=UTF-8");    	
     	String title = request.getParameter("title");
     	String first_name = request.getParameter("first_name");
     	String last_name = request.getParameter("last_name");
@@ -34,12 +32,14 @@ public class FormController extends HttpServlet {
     	String city = request.getParameter("city");
     	String postcode = request.getParameter("postcode");
     	String tel_number = request.getParameter("tel_number");
-    	Customer customer = new Customer (title, first_name, last_name, email_address, address_line_1, address_line_2, city, postcode, tel_number);
+    	String sitename = request.getParameter("site_name");
+    	Customer customer = new Customer (title, first_name, last_name, email_address, address_line_1, address_line_2, city, postcode, tel_number, sitename);
     	DatabaseManager dbManager = new DatabaseManager();
-    	String result = dbManager.insert(customer);
+    	int result = dbManager.insert(customer);
     	response.getWriter().print(result);
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
-		requestDispatcher.forward(request, response);
+    	response.sendRedirect("success.jsp");
+//		RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+//		requestDispatcher.forward(request, response);
     }
     
 	/**

@@ -1,37 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Successful Form Input</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>AeroParker Challenge</title>
 </head>
-<body>
-    <% 
-    String siteName = request.getParameter("site_name");
-    if (siteName == null) {
-    %>
-        <h3><%= siteName = "Avalon City" %></h3>
-    <%
-        } else {
-        	siteName = request.getParameter("site_name");
-    %>
-			        <h3><%= siteName %></h3>
-    <%
-        }
-    %>
-	<p>Thank you <%= request.getParameter("first_name") %></p>
-	<p>Test Values: </p>
-		<ul>
-			<li>Site name = <%= siteName %></li> 
-			<!-- might have to do a conditional stmt if sitename comes as null if its not set in url params -->
-			<li>Email = <%= request.getParameter("email_address") %></li>
-			<li>Address Line 1 = <%= request.getParameter("address_line_1") %></li>
-			<li>Address Line 2 = <%= request.getParameter("address_line_2") %></li>
-			<li>City = <%= request.getParameter("city") %></li>
-			<li>Postcode = <%= request.getParameter("postcode") %></li>
-			<li>Tel NUmber = <%= request.getParameter("tel_number") %></li>
-		</ul>
-
+<body class="w3-light-grey">
+	<!-- Page container -->
+	<div class="w3-content w3-margin-top w3-center" style="max-width:700px;">
+		<!-- Grid layout -->
+  		<div class="w3-row-padding">
+  		      <div class="w3-container w3-card w3-white w3-margin-bottom">
+  			    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-plane fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Success<i class="fa fa-car fa-fw w3-margin-left w3-xxlarge w3-text-teal"></i></h2>
+  			        <h3 class="w3-text-grey w3-padding-12">Thank you for singing up!</h3>
+								
+  				</div>
+  		</div>
+	
+	</div>
 </body>
 </html>

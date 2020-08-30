@@ -17,7 +17,7 @@
   		      <div class="w3-container w3-card w3-white w3-margin-bottom">
   			    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-plane fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>AeroParker<i class="fa fa-car fa-fw w3-margin-left w3-xxlarge w3-text-teal"></i></h2>
   			    <% 
-  			    String siteName = request.getParameter("sitename");
+  			    String siteName = request.getParameter("site_name");
   			    if (siteName != null) {
   			    %>
   			        <h3><%= siteName %></h3>
@@ -31,7 +31,7 @@
   			    %>
   			    
   			    	<div class="w3-container">
-  			    	   <form action="FormController" method ="GET" target="success.jsp">
+  			    	   <form action="FormController" method ="GET">
 	  <p><input class="w3-input w3-padding-16" type="text" placeholder="Title" required name="title" maxlength="5"></p>
 	  <p><input type="hidden" name="site_name" value=<%= siteName %>></p>
       <p><input class="w3-input w3-padding-16" type="text" placeholder="First Name" required name="first_name" maxlength="50"></p>

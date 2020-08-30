@@ -1,7 +1,7 @@
 package controller;
 
 public class Customer {
-	private String title, first_name, last_name, email_address, address_line_1, address_line_2, city, postcode, tel_number;
+	private String title, first_name, last_name, email_address, address_line_1, address_line_2, city, postcode, tel_number, sitename;
 
 	public String getTitle() {
 		return title;
@@ -74,13 +74,21 @@ public class Customer {
 	public void setTel_number(String tel_number) {
 		this.tel_number = tel_number;
 	}
+	
+	public String getSitename() {
+		return sitename;
+	}
+
+	public void setSitename(String sitename) {
+		this.sitename = sitename;
+	}
 
 	public Customer() {
 		super();
 	}
 
 	public Customer(String title, String first_name, String last_name, String email_address, String address_line_1,
-			String address_line_2, String city, String postcode, String tel_number) {
+			String address_line_2, String city, String postcode, String tel_number, String sitename) {
 		super();
 		this.title = title;
 		this.first_name = first_name;
@@ -91,5 +99,6 @@ public class Customer {
 		this.city = city;
 		this.postcode = postcode;
 		this.tel_number = tel_number;
+		this.sitename = sitename;
 	}
 }
