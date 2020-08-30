@@ -31,8 +31,8 @@
   			    %>
   			    
   			    	<div class="w3-container">
-  			    	   <form action="success.jsp" method ="GET" target="success.jsp">
-	  <p><input class="w3-input w3-padding-16" type="text" placeholder="Title" required name="Title" maxlength="5"></p>
+  			    	   <form action="FormController" method ="GET" target="success.jsp">
+	  <p><input class="w3-input w3-padding-16" type="text" placeholder="Title" required name="title" maxlength="5"></p>
 	  <p><input type="hidden" name="site_name" value=<%= siteName %>></p>
       <p><input class="w3-input w3-padding-16" type="text" placeholder="First Name" required name="first_name" maxlength="50"></p>
       <p><input class="w3-input w3-padding-16" type="text" placeholder="Last Name" required name="last_name" maxlength="50"></p>
