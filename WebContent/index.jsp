@@ -15,7 +15,7 @@
 		<!-- Grid layout -->
   		<div class="w3-row-padding">
   		      <div class="w3-container w3-card w3-white w3-margin-bottom">
-  			    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-plane fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>AeroParker<i class="fa fa-car fa-fw w3-margin-left w3-xxlarge w3-text-teal"></i></h2>
+  			    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-plane fa-fw w3-margin-right w3-xxlarge w3-text-deep-orange"></i>AeroParker<i class="fa fa-car fa-fw w3-margin-left w3-xxlarge w3-text-deep-orange"></i></h2>
   			    <% 
   			    String siteName = request.getParameter("site_name");
   			    if (siteName != null) {
