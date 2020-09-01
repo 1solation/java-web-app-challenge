@@ -21,4 +21,3 @@ Navigate to ```Server```>```Data Import```>```Import from Self-Contained File```
 -  Forwarding onto new .jsp page to prevent resubmission on refresh.
 - Foreign keys in MySQL DB not updating on insert to main customers table, most likely something I have done during configuration of the DB.
 - Tried to update the foreign keys mentioned above manually (in `customers sites` table) through use of a prepared statement which generates a key for the auto-generated customer ID - see [DatabaseManager.java](https://github.com/hasib-a/java-web-app-challenge/blob/master/src/controller/DatabaseManager.java)
-
