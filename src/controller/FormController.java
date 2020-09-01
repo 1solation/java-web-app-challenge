@@ -2,17 +2,27 @@ package controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class HomeController
+ * Servlet implementation class FormController
  */
+@WebServlet("/customerForm")
 public class FormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	private String paramName;
+	private String paramValue;
+	
+	public void init() throws ServletException {
+		paramName = "site_name";
+		paramValue = getServletConfig().getInitParameter(paramName);
+	}
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -35,11 +45,11 @@ public class FormController extends HttpServlet {
     	String sitename = request.getParameter("site_name");
     	Customer customer = new Customer (title, first_name, last_name, email_address, address_line_1, address_line_2, city, postcode, tel_number, sitename);
     	DatabaseManager dbManager = new DatabaseManager();
-    	int result = dbManager.insert(customer);
+    	String result = dbManager.insert(customer);
     	response.getWriter().print(result);
-    	response.sendRedirect("success.jsp");
-//		RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
-//		requestDispatcher.forward(request, response);
+//    	response.sendRedirect("success.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("success.jsp");
+		requestDispatcher.forward(request, response);
     }
     
 	/**
