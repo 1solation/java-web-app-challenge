@@ -2,7 +2,7 @@ package controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+//import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -32,13 +32,14 @@ public class DatabaseManager {
 		return db_connection;
 	}
 	public String insert(Customer customer) {
-		//This works as expected, minus the ps.getGeneratedKeys() on line 55. Need to revisit.
+//		This works as expected, minus the ps.getGeneratedKeys() on line 55. Need to revisit.
+//		UPDATE: Keeping code here in case I need to go back to first solution, but commented out for now. 
 //		int generatedCustomerID = 0;
 		loadDriver(db_driver);
 		Connection db_connection = getConnection();
 		String sql = "insert into AeroParker.customers (`E-MAIL ADDRESS`,`TITLE`,`FIRST NAME`,`LAST NAME`,"
-				+ "`ADDRESS LINE 1`,`ADDRESS LINE 2`,`CITY`,`POSTCODE`,`TELEPHONE NUMBER`, `SITE NAME`)  "
-				+ "values (?,?,?,?,?,?,?,?,?,?)";
+				+ "`ADDRESS LINE 1`,`ADDRESS LINE 2`,`CITY`,`POSTCODE`,`TELEPHONE NUMBER`)  "
+				+ "values (?,?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ps = db_connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, customer.getEmail_address());
@@ -50,7 +51,9 @@ public class DatabaseManager {
 			ps.setString(7, customer.getCity());
 			ps.setString(8, customer.getPostcode());
 			ps.setString(9, customer.getTel_number());
-			ps.setString(10, customer.getSitename());
+//			ps.setString(10, customer.getSitename());
+//			wrong way to add site name, need to try and add to sites table & some how reference that to update 
+//			the customer sites table 
 			ps.executeUpdate();
 			
 			System.out.println("Customer Data entered sucessfully to DB");
