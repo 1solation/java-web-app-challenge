@@ -2,7 +2,7 @@ package controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
+//import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,9 +47,9 @@ public class FormController extends HttpServlet {
     	DatabaseManager dbManager = new DatabaseManager();
     	String result = dbManager.insert(customer);
     	response.getWriter().print(result);
-//    	response.sendRedirect("success.jsp");
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("success.jsp");
-		requestDispatcher.forward(request, response);
+    	response.sendRedirect("success.jsp");
+//		RequestDispatcher requestDispatcher = request.getRequestDispatcher("success.jsp");
+//		requestDispatcher.forward(request, response);
     }
     
 	/**
