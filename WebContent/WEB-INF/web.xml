@@ -14,6 +14,10 @@
     <display-name>FormController</display-name>
     <servlet-name>FormController</servlet-name>
     <servlet-class>controller.FormController</servlet-class>
+    <init-param>
+            <param-name>site_name</param-name>
+            <param-value>Avalon&#160;City</param-value>
+        </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>FormController</servlet-name>

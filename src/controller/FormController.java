@@ -16,6 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 public class FormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	private String paramName;
+	private String paramValue;
+	
+	public void init() throws ServletException {
+		paramName = "site_name";
+		paramValue = getServletConfig().getInitParameter(paramName);
+	}
     /**
      * @see HttpServlet#HttpServlet()
      */
