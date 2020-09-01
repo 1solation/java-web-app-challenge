@@ -19,5 +19,7 @@ Navigate to ```Server```>```Data Import```>```Import from Self-Contained File```
 - Basic client-side form validation.
 - Insertion of data into main `customers` table.
 -  Forwarding onto new .jsp page to prevent resubmission on refresh.
-- Foreign keys in MySQL DB not updating on insert to main customers table, most likely something I have done during configuration of the DB.
-- Tried to update the foreign keys mentioned above manually (in `customers sites` table) through use of a prepared statement which generates a key for the auto-generated customer ID - see [DatabaseManager.java](https://github.com/hasib-a/java-web-app-challenge/blob/master/src/controller/DatabaseManager.java)
+- Foreign keys in MySQL DB not updating on insert to main customers table, most likely due to not sending the current ```site_name``` param to the relevant table in the DB. 
+	- Need to fix this if I can.
+- Tried to update the foreign keys mentioned above manually (in `customers sites` table) through use of a prepared statement which generates a key for the auto-generated customer ID - see [DatabaseManager.java](https://github.com/hasib-a/java-web-app-challenge/blob/master/src/controller/DatabaseManager.java).
+	- UPDATE: removed this functionality, doesn't seem like the right one I need. Code has been commented out for now in case I need to go back to it before it's fixed.
