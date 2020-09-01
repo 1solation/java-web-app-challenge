@@ -72,7 +72,8 @@ public class DatabaseManager {
 		
 	}
 	
-//	public void insertSite(int generatedCustomerID, Customer customer) {
+//	public void insertCustomerSite(int generatedCustomerID, Customer customer) {
+//	This doesn't work as expected, need to revisit
 //		loadDriver(db_driver);
 //		Connection db_connection = getConnection();
 //		int siteID = 0;
@@ -83,14 +84,13 @@ public class DatabaseManager {
 //			siteID = 2;
 //		}
 //		
-//		String sql = "insert into `AeroParker`.`customer sites` (`CUSTOMER_ID`,`SITE_ID` values (?,?)";
+//		String sql2 = "insert into `AeroParker`.`customer sites` (`SITE_ID` values (?)";
 //		
 //		try {
-//			PreparedStatement ps = db_connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+//			PreparedStatement ps2 = db_connection.prepareStatement(sql2);
 //			
-//			ps.setInt(1, siteID);
-//			ps.setInt(2, generatedCustomerID);
-//			ps.executeUpdate();
+//			ps2.setInt(1, siteID);
+//			ps2.executeUpdate();
 //		} catch (SQLException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
